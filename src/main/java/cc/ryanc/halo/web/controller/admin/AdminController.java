@@ -12,8 +12,9 @@ import cc.ryanc.halo.service.PostService;
 import cc.ryanc.halo.service.UserService;
 import cc.ryanc.halo.utils.HaloUtils;
 import cc.ryanc.halo.web.controller.core.BaseController;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -36,10 +37,11 @@ import java.util.regex.Pattern;
  * @version : 1.0
  * description: 后台首页控制器
  */
-@Slf4j
 @Controller
 @RequestMapping(value = "/admin")
 public class AdminController extends BaseController {
+
+    Logger logger = LoggerFactory.getLogger(AdminController.class);
 
     @Autowired
     private PostService postService;
@@ -149,7 +151,7 @@ public class AdminController extends BaseController {
             }
             userService.updateUserLoginLast(new Date());
             logsService.saveByLogs(new Logs(LogsRecord.LOGIN, LogsRecord.LOGIN_ERROR + "[" + loginName + "," + loginPwd + "]", HaloUtils.getIpAddr(request), new Date()));
-            log.error("登录失败！：{0}", e.getMessage());
+            logger.error("登录失败！：{0}", e.getMessage());
         }
         return status;
     }
@@ -165,7 +167,7 @@ public class AdminController extends BaseController {
         User user = (User) session.getAttribute(HaloConst.USER_SESSION_KEY);
         logsService.saveByLogs(new Logs(LogsRecord.LOGOUT, user.getUserName(), HaloUtils.getIpAddr(request), new Date()));
         session.invalidate();
-        log.info("用户[" + user.getUserName() + "]退出登录");
+        logger.info("用户[" + user.getUserName() + "]退出登录");
         return "redirect:/admin/login";
     }
 
@@ -198,7 +200,7 @@ public class AdminController extends BaseController {
         try {
             logsService.removeAllLogs();
         } catch (Exception e) {
-            log.error("未知错误：" + e.getMessage());
+            logger.error("未知错误：" + e.getMessage());
         }
         return "redirect:/admin";
     }

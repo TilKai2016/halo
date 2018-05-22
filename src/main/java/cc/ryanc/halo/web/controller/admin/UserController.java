@@ -4,7 +4,8 @@ import cc.ryanc.halo.model.domain.User;
 import cc.ryanc.halo.service.UserService;
 import cc.ryanc.halo.utils.HaloUtils;
 import freemarker.template.Configuration;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -17,10 +18,11 @@ import javax.servlet.http.HttpSession;
  * @version : 1.0
  * description: 用户控制
  */
-@Slf4j
 @Controller
 @RequestMapping(value = "/admin/profile")
 public class UserController {
+
+    Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
     private UserService userService;
@@ -57,7 +59,7 @@ public class UserController {
                 return false;
             }
         } catch (Exception e) {
-            log.error("未知错误：{0}", e.getMessage());
+            logger.error("未知错误：{0}", e.getMessage());
             return false;
         }
         return true;
@@ -88,7 +90,7 @@ public class UserController {
                 return false;
             }
         } catch (Exception e) {
-            log.error("修改密码：未知错误，{0}", e.getMessage());
+            logger.error("修改密码：未知错误，{0}", e.getMessage());
             return false;
         }
         return true;

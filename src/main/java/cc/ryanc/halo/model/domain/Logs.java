@@ -1,7 +1,5 @@
 package cc.ryanc.halo.model.domain;
 
-import lombok.Data;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,7 +12,6 @@ import java.util.Date;
  * @version : 1.0
  * @date : 2018/1/19
  */
-@Data
 @Entity
 @Table(name = "halo_logs")
 public class Logs implements Serializable {

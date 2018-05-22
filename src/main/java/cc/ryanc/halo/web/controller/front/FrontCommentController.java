@@ -8,8 +8,9 @@ import cc.ryanc.halo.service.MailService;
 import cc.ryanc.halo.service.PostService;
 import cc.ryanc.halo.service.UserService;
 import cc.ryanc.halo.utils.HaloUtils;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -28,9 +29,10 @@ import java.util.regex.Pattern;
  * @version : 1.0
  * @date : 2018/4/26
  */
-@Slf4j
 @Controller
 public class FrontCommentController {
+
+    Logger logger = LoggerFactory.getLogger(FrontCommentController.class);
 
     @Autowired
     private CommentService commentService;
@@ -146,7 +148,7 @@ public class FrontCommentController {
                     map.put("commentContent", comment.getCommentContent());
                     mailService.sendTemplateMail(userService.findUser().getUserEmail(), "有新的评论", map, "common/mail/mail_admin.ftl");
                 } catch (Exception e) {
-                    log.error("邮件服务器未配置：", e.getMessage());
+                    logger.error("邮件服务器未配置：", e.getMessage());
                 }
             }
         }

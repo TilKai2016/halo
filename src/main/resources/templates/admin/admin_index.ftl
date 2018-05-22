@@ -284,54 +284,54 @@
                     </div>
                 </div>
                 </#if>
-                <#if options.widget_logslastest?default("true")=="true">
-                <div class="col-lg-6 col-xs-12" id="widgetLogsLastestBody">
-                    <div class="box box-primary">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">最新日志</h3>
-                            <div class="box-tools">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa fa-bars"></i></button>
-                                    <ul class="dropdown-menu pull-right" role="menu">
-                                        <li><a href="#" onclick="openAllLogs()">查看所有</a></li>
-                                        <li><a href="/admin/logs/clear">清空日志</a></li>
-                                    </ul>
-                                    <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                                        <i class="fa fa-minus"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box-body table-responsive">
-                            <table class="table table-bordered table-hover text-center">
-                                <thead>
-                                    <tr>
-                                        <th>事件</th>
-                                        <th>结果</th>
-                                        <th>IP</th>
-                                        <th>时间</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <#if logs??>
-                                    <#list logs as log>
-                                        <tr>
-                                            <td>${log.logTitle}</td>
-                                            <td>${log.logContent}</td>
-                                            <td>${log.logIp}</td>
-                                            <td>${log.logCreated?string("yyyy-MM-dd HH:mm")}</td>
-                                        </tr>
-                                    </#list>
-                                    <#else>
-                                        <tr><td>暂无数据</td></tr>
-                                    </#if>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                </#if>
+                <#--<#if options.widget_logslastest?default("true")=="true">-->
+                <#--<div class="col-lg-6 col-xs-12" id="widgetLogsLastestBody">-->
+                    <#--<div class="box box-primary">-->
+                        <#--<div class="box-header with-border">-->
+                            <#--<h3 class="box-title">最新日志</h3>-->
+                            <#--<div class="box-tools">-->
+                                <#--<div class="btn-group">-->
+                                    <#--<button type="button" class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown" aria-expanded="false">-->
+                                        <#--<i class="fa fa-bars"></i></button>-->
+                                    <#--<ul class="dropdown-menu pull-right" role="menu">-->
+                                        <#--<li><a href="#" onclick="openAllLogs()">查看所有</a></li>-->
+                                        <#--<li><a href="/admin/logs/clear">清空日志</a></li>-->
+                                    <#--</ul>-->
+                                    <#--<button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">-->
+                                        <#--<i class="fa fa-minus"></i>-->
+                                    <#--</button>-->
+                                <#--</div>-->
+                            <#--</div>-->
+                        <#--</div>-->
+                        <#--<div class="box-body table-responsive">-->
+                            <#--<table class="table table-bordered table-hover text-center">-->
+                                <#--<thead>-->
+                                    <#--<tr>-->
+                                        <#--<th>事件</th>-->
+                                        <#--<th>结果</th>-->
+                                        <#--<th>IP</th>-->
+                                        <#--<th>时间</th>-->
+                                    <#--</tr>-->
+                                <#--</thead>-->
+                                <#--<tbody>-->
+                                    <#--<#if logs??>-->
+                                    <#--<#list logs as log>-->
+                                        <#--<tr>-->
+                                            <#--<td>${log.logTitle}</td>-->
+                                            <#--<td>${log.logContent}</td>-->
+                                            <#--<td>${log.logIp}</td>-->
+                                            <#--<td>${log.logCreated?string("yyyy-MM-dd HH:mm")}</td>-->
+                                        <#--</tr>-->
+                                    <#--</#list>-->
+                                    <#--<#else>-->
+                                        <#--<tr><td>暂无数据</td></tr>-->
+                                    <#--</#if>-->
+                                <#--</tbody>-->
+                            <#--</table>-->
+                        <#--</div>-->
+                    <#--</div>-->
+                <#--</div>-->
+                <#--</#if>-->
             </div>
         </section>
         <script src="/static/plugins/layer/layer.js"></script>

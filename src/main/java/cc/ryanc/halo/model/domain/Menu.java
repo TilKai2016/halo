@@ -1,7 +1,5 @@
 package cc.ryanc.halo.model.domain;
 
-import lombok.Data;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,7 +11,6 @@ import java.io.Serializable;
  * @date : 2018/1/24
  * @version : 1.0
  */
-@Data
 @Entity
 @Table(name = "halo_menu")
 public class Menu implements Serializable {
@@ -23,8 +20,6 @@ public class Menu implements Serializable {
     /**
      * 编号 自增
      */
-    @Id
-    @GeneratedValue
     private Long menuId;
 
     /**
@@ -51,4 +46,54 @@ public class Menu implements Serializable {
      * 打开方式
      */
     private String menuTarget;
+
+    @Id
+    @GeneratedValue
+    public Long getMenuId() {
+        return menuId;
+    }
+
+    public void setMenuId(Long menuId) {
+        this.menuId = menuId;
+    }
+
+    public String getMenuName() {
+        return menuName;
+    }
+
+    public void setMenuName(String menuName) {
+        this.menuName = menuName;
+    }
+
+    public String getMenuUrl() {
+        return menuUrl;
+    }
+
+    public void setMenuUrl(String menuUrl) {
+        this.menuUrl = menuUrl;
+    }
+
+    public Integer getMenuSort() {
+        return menuSort;
+    }
+
+    public void setMenuSort(Integer menuSort) {
+        this.menuSort = menuSort;
+    }
+
+    public String getMenuIcon() {
+        return menuIcon;
+    }
+
+    public void setMenuIcon(String menuIcon) {
+        this.menuIcon = menuIcon;
+    }
+
+    public String getMenuTarget() {
+        return menuTarget;
+    }
+
+    public void setMenuTarget(String menuTarget) {
+        this.menuTarget = menuTarget;
+    }
 }

@@ -6,8 +6,9 @@ import cc.ryanc.halo.model.dto.LogsRecord;
 import cc.ryanc.halo.service.*;
 import cc.ryanc.halo.utils.HaloUtils;
 import freemarker.template.Configuration;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,10 +25,11 @@ import java.util.List;
  * @version : 1.0
  * description : 安装控制器
  */
-@Slf4j
 @Controller
 @RequestMapping(value = "/install")
 public class InstallController {
+
+    Logger logger = LoggerFactory.getLogger(InstallController.class);
 
     @Autowired
     private OptionsService optionsService;
@@ -68,7 +70,7 @@ public class InstallController {
                 model.addAttribute("isInstall", false);
             }
         } catch (Exception e) {
-            log.error(e.getMessage());
+            logger.error(e.getMessage());
         }
         return "common/install";
     }
@@ -76,8 +78,8 @@ public class InstallController {
     /**
      * 执行安装
      *
-     * @param siteTitle       博客标题
-     * @param siteUrl         博客网址
+     * @param blogTitle       博客标题
+     * @param blogUrl         博客网址
      * @param userName        用户名
      * @param userDisplayName 用户名显示名
      * @param userEmail       用户邮箱
@@ -200,7 +202,7 @@ public class InstallController {
             configuration.setSharedVariable("options", optionsService.findAllOptions());
             configuration.setSharedVariable("user", userService.findUser());
         } catch (Exception e) {
-            log.error(e.getMessage());
+            logger.error(e.getMessage());
             return false;
         }
         return true;

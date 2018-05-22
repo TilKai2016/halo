@@ -2,7 +2,8 @@ package cc.ryanc.halo.web.controller.admin;
 
 import cc.ryanc.halo.model.domain.Menu;
 import cc.ryanc.halo.service.MenuService;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,10 +17,11 @@ import javax.websocket.server.PathParam;
  * @version : 1.0
  * description :
  */
-@Slf4j
 @Controller
 @RequestMapping(value = "/admin/menus")
 public class MenuController {
+
+    Logger logger = LoggerFactory.getLogger(MenuController.class);
 
     @Autowired
     private MenuService menuService;
@@ -47,7 +49,7 @@ public class MenuController {
         try {
             menuService.saveByMenu(menu);
         } catch (Exception e) {
-            log.error("保存菜单失败：" + e.getMessage());
+            logger.error("保存菜单失败：" + e.getMessage());
         }
         return "redirect:/admin/menus";
     }
@@ -78,7 +80,7 @@ public class MenuController {
         try {
             menuService.removeByMenuId(menuId);
         } catch (Exception e) {
-            log.error("删除菜单失败：{0}", e.getMessage());
+            logger.error("删除菜单失败：{0}", e.getMessage());
         }
         return "redirect:/admin/menus";
     }

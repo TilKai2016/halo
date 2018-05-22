@@ -1,7 +1,5 @@
 package cc.ryanc.halo.model.domain;
 
-import lombok.Data;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Lob;
@@ -13,7 +11,6 @@ import java.io.Serializable;
  * @date : 2017/11/14
  * @version : 1.0
  */
-@Data
 @Entity
 @Table(name = "halo_options")
 public class Options implements Serializable {
@@ -23,12 +20,28 @@ public class Options implements Serializable {
     /**
      * 设置项名称
      */
-    @Id
     private String optionName;
 
     /**
      * 设置项的值
      */
-    @Lob
     private String optionValue;
+
+    @Id
+    public String getOptionName() {
+        return optionName;
+    }
+
+    public void setOptionName(String optionName) {
+        this.optionName = optionName;
+    }
+
+    @Lob
+    public String getOptionValue() {
+        return optionValue;
+    }
+
+    public void setOptionValue(String optionValue) {
+        this.optionValue = optionValue;
+    }
 }

@@ -9,7 +9,8 @@ import com.sun.syndication.feed.rss.Item;
 import com.sun.syndication.io.FeedException;
 import com.sun.syndication.io.WireFeedOutput;
 import io.github.biezhi.ome.OhMyEmail;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.util.ResourceUtils;
 
 import javax.imageio.ImageIO;
@@ -37,8 +38,9 @@ import java.util.List;
  * @version : 1.0
  * description:常用的方法
  */
-@Slf4j
 public class HaloUtils {
+
+    public static Logger logger = LoggerFactory.getLogger(HaloUtils.class);
 
     private final static Calendar NOW = Calendar.getInstance();
 
@@ -72,7 +74,7 @@ public class HaloUtils {
             BufferedImage bi = reader.read(0,param);
             ImageIO.write(bi, suffix, new File(dest));
         }catch (Exception e){
-            log.error("剪裁失败，图片本身尺寸小于需要修剪的尺寸：{0}",e.getMessage());
+            logger.error("剪裁失败，图片本身尺寸小于需要修剪的尺寸：{0}",e.getMessage());
         }
     }
 
@@ -99,7 +101,7 @@ public class HaloUtils {
                 }
             }
         }catch (Exception e){
-            log.error("未知错误：{0}",e.getMessage());
+            logger.error("未知错误：{0}",e.getMessage());
         }
         return FILE_LIST;
     }
@@ -134,7 +136,7 @@ public class HaloUtils {
                 }
             }
         }catch (Exception e){
-            log.error("主题获取失败：{0}",e.getMessage());
+            logger.error("主题获取失败：{0}",e.getMessage());
         }
         return themes;
     }
@@ -170,7 +172,7 @@ public class HaloUtils {
                 }
             }
         }catch (Exception e){
-            log.error("未知错误：{0}",e.getMessage());
+            logger.error("未知错误：{0}",e.getMessage());
         }
         return tpls;
     }
@@ -191,7 +193,7 @@ public class HaloUtils {
             inputStream.close();
             return new String(fileContent,"UTF-8");
         }catch (Exception e){
-            log.error("读取模板文件错误：{0}",e.getMessage());
+            logger.error("读取模板文件错误：{0}",e.getMessage());
         }
         return null;
     }

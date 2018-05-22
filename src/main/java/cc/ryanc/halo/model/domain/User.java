@@ -1,7 +1,5 @@
 package cc.ryanc.halo.model.domain;
 
-import lombok.Data;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,7 +12,6 @@ import java.util.Date;
  * @version : 1.0
  * @date : 2017/11/14
  */
-@Data
 @Entity
 @Table(name = "halo_user")
 public class User implements Serializable {
@@ -24,8 +21,6 @@ public class User implements Serializable {
     /**
      * 编号
      */
-    @Id
-    @GeneratedValue
     private Long userId;
 
     /**
@@ -72,4 +67,86 @@ public class User implements Serializable {
      * 登录错误次数记录
      */
     private Integer loginError;
+
+    @Id
+    @GeneratedValue
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserDisplayName() {
+        return userDisplayName;
+    }
+
+    public void setUserDisplayName(String userDisplayName) {
+        this.userDisplayName = userDisplayName;
+    }
+
+    public String getUserPass() {
+        return userPass;
+    }
+
+    public void setUserPass(String userPass) {
+        this.userPass = userPass;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
+    public String getUserAvatar() {
+        return userAvatar;
+    }
+
+    public void setUserAvatar(String userAvatar) {
+        this.userAvatar = userAvatar;
+    }
+
+    public String getUserDesc() {
+        return userDesc;
+    }
+
+    public void setUserDesc(String userDesc) {
+        this.userDesc = userDesc;
+    }
+
+    public String getLoginEnable() {
+        return loginEnable;
+    }
+
+    public void setLoginEnable(String loginEnable) {
+        this.loginEnable = loginEnable;
+    }
+
+    public Date getLoginLast() {
+        return loginLast;
+    }
+
+    public void setLoginLast(Date loginLast) {
+        this.loginLast = loginLast;
+    }
+
+    public Integer getLoginError() {
+        return loginError;
+    }
+
+    public void setLoginError(Integer loginError) {
+        this.loginError = loginError;
+    }
 }

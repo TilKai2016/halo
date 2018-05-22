@@ -1,7 +1,6 @@
 package cc.ryanc.halo.model.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,7 +13,6 @@ import java.util.List;
  * @version : 1.0
  * @date : 2017/11/14
  */
-@Data
 @Entity
 @Table(name = "halo_post")
 public class Post implements Serializable {
@@ -24,15 +22,11 @@ public class Post implements Serializable {
     /**
      * 文章编号
      */
-    @Id
-    @GeneratedValue
     private Long postId;
 
     /**
      * 发表用户 多对一
      */
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "user_id")
     private User user;
 
     /**
@@ -50,19 +44,16 @@ public class Post implements Serializable {
     /**
      * 文章内容 Markdown格式
      */
-    @Lob
     private String postContentMd;
 
     /**
      * 文章内容 html格式
      */
-    @Lob
     private String postContent;
 
     /**
      * 文章路径
      */
-    @Column(unique = true)
     private String postUrl;
 
     /**
@@ -73,26 +64,16 @@ public class Post implements Serializable {
     /**
      * 文章所属分类
      */
-    @ManyToMany(cascade = {CascadeType.PERSIST}, fetch = FetchType.LAZY)
-    @JoinTable(name = "halo_posts_categories",
-            joinColumns = {@JoinColumn(name = "post_id", nullable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "cate_id", nullable = false)})
     private List<Category> categories = new ArrayList<>();
 
     /**
      * 文章所属标签
      */
-    @ManyToMany(cascade = {CascadeType.PERSIST}, fetch = FetchType.LAZY)
-    @JoinTable(name = "halo_posts_tags",
-            joinColumns = {@JoinColumn(name = "post_id", nullable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "tag_id", nullable = false)})
     private List<Tag> tags = new ArrayList<>();
 
     /**
      * 文章的评论
      */
-    @OneToMany(mappedBy = "post", cascade = {CascadeType.REMOVE}, fetch = FetchType.EAGER)
-    @JsonIgnore
     private List<Comment> comments = new ArrayList<>();
 
     /**
@@ -121,4 +102,149 @@ public class Post implements Serializable {
      * 文章访问量
      */
     private Long postViews = 0L;
+
+    @Id
+    @GeneratedValue
+    public Long getPostId() {
+        return postId;
+    }
+
+    public void setPostId(Long postId) {
+        this.postId = postId;
+    }
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "user_id")
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public String getPostTitle() {
+        return postTitle;
+    }
+
+    public void setPostTitle(String postTitle) {
+        this.postTitle = postTitle;
+    }
+
+    public String getPostType() {
+        return postType;
+    }
+
+    public void setPostType(String postType) {
+        this.postType = postType;
+    }
+
+    @Lob
+    public String getPostContentMd() {
+        return postContentMd;
+    }
+
+    public void setPostContentMd(String postContentMd) {
+        this.postContentMd = postContentMd;
+    }
+
+    @Lob
+    public String getPostContent() {
+        return postContent;
+    }
+
+    public void setPostContent(String postContent) {
+        this.postContent = postContent;
+    }
+
+    @Column(unique = true)
+    public String getPostUrl() {
+        return postUrl;
+    }
+
+    public void setPostUrl(String postUrl) {
+        this.postUrl = postUrl;
+    }
+
+    public String getPostSummary() {
+        return postSummary;
+    }
+
+    public void setPostSummary(String postSummary) {
+        this.postSummary = postSummary;
+    }
+
+    @ManyToMany(cascade = {CascadeType.PERSIST}, fetch = FetchType.LAZY)
+    @JoinTable(name = "halo_posts_categories",
+            joinColumns = {@JoinColumn(name = "post_id", nullable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "cate_id", nullable = false)})
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+    }
+
+    @ManyToMany(cascade = {CascadeType.PERSIST}, fetch = FetchType.LAZY)
+    @JoinTable(name = "halo_posts_tags",
+            joinColumns = {@JoinColumn(name = "post_id", nullable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "tag_id", nullable = false)})
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
+    }
+
+    @OneToMany(mappedBy = "post", cascade = {CascadeType.REMOVE}, fetch = FetchType.EAGER)
+    @JsonIgnore
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public String getPostThumbnail() {
+        return postThumbnail;
+    }
+
+    public void setPostThumbnail(String postThumbnail) {
+        this.postThumbnail = postThumbnail;
+    }
+
+    public Date getPostDate() {
+        return postDate;
+    }
+
+    public void setPostDate(Date postDate) {
+        this.postDate = postDate;
+    }
+
+    public Date getPostUpdate() {
+        return postUpdate;
+    }
+
+    public void setPostUpdate(Date postUpdate) {
+        this.postUpdate = postUpdate;
+    }
+
+    public Integer getPostStatus() {
+        return postStatus;
+    }
+
+    public void setPostStatus(Integer postStatus) {
+        this.postStatus = postStatus;
+    }
+
+    public Long getPostViews() {
+        return postViews;
+    }
+
+    public void setPostViews(Long postViews) {
+        this.postViews = postViews;
+    }
 }

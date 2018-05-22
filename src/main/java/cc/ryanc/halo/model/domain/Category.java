@@ -1,7 +1,6 @@
 package cc.ryanc.halo.model.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,7 +12,6 @@ import java.util.List;
  * @version : 1.0
  * @date : 2017/11/30
  */
-@Data
 @Entity
 @Table(name = "halo_category")
 public class Category implements Serializable {
@@ -23,8 +21,6 @@ public class Category implements Serializable {
     /**
      * 分类编号
      */
-    @Id
-    @GeneratedValue
     private Long cateId;
 
     /**
@@ -42,7 +38,49 @@ public class Category implements Serializable {
      */
     private String cateDesc;
 
+    private List<Post> posts = new ArrayList<>();
+
+    @Id
+    @GeneratedValue
+    public Long getCateId() {
+        return cateId;
+    }
+
+    public void setCateId(Long cateId) {
+        this.cateId = cateId;
+    }
+
+    public String getCateName() {
+        return cateName;
+    }
+
+    public void setCateName(String cateName) {
+        this.cateName = cateName;
+    }
+
+    public String getCateUrl() {
+        return cateUrl;
+    }
+
+    public void setCateUrl(String cateUrl) {
+        this.cateUrl = cateUrl;
+    }
+
+    public String getCateDesc() {
+        return cateDesc;
+    }
+
+    public void setCateDesc(String cateDesc) {
+        this.cateDesc = cateDesc;
+    }
+
     @ManyToMany(mappedBy = "categories")
     @JsonIgnore
-    private List<Post> posts = new ArrayList<>();
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
 }

@@ -4,7 +4,6 @@ import cc.ryanc.halo.model.domain.Post;
 import cc.ryanc.halo.model.dto.HaloConst;
 import cc.ryanc.halo.service.PostService;
 import cc.ryanc.halo.web.controller.core.BaseController;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -26,7 +25,6 @@ import java.util.List;
  * @version : 1.0
  * @date : 2018/4/26
  */
-@Slf4j
 @Controller
 @RequestMapping(value = {"/", "index"})
 public class FrontIndexController extends BaseController {
@@ -52,7 +50,6 @@ public class FrontIndexController extends BaseController {
      *
      * @param model model
      * @param page  当前页码
-     * @param size  每页数量
      * @return 模板路径/themes/{theme}/index
      */
     @GetMapping(value = "page/{page}")

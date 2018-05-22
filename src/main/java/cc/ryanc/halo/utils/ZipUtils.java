@@ -1,6 +1,7 @@
 package cc.ryanc.halo.utils;
 
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.util.Enumeration;
@@ -14,8 +15,9 @@ import java.util.zip.ZipOutputStream;
  * @date : 2018/5/11
  * Zip压缩工具类
  */
-@Slf4j
 public class ZipUtils {
+
+    public static Logger logger = LoggerFactory.getLogger(ZipUtils.class);
 
     /**
      * 解压Zip文件到指定目录
@@ -57,17 +59,20 @@ public class ZipUtils {
                 in.close();
             }
         } catch (Exception e) {
-            log.error("解压失败：{0}",e.getMessage());
+            logger.error("解压失败：{0}",e.getMessage());
         }finally{
             try {
-                if(zip!=null)
+                if(zip!=null) {
                     zip.close();
-                if(in!=null)
+                }
+                if(in!=null) {
                     in.close();
-                if(out!=null)
+                }
+                if(out!=null) {
                     out.close();
+                }
             } catch (IOException e) {
-                log.error("未知错误：{0}",e.getMessage());
+                logger.error("未知错误：{0}",e.getMessage());
             }
         }
     }

@@ -2,7 +2,8 @@ package cc.ryanc.halo.web.controller.admin;
 
 import cc.ryanc.halo.model.domain.Tag;
 import cc.ryanc.halo.service.TagService;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,10 +17,11 @@ import javax.websocket.server.PathParam;
  * @version : 1.0
  * description: 标签控制器
  */
-@Slf4j
 @Controller
 @RequestMapping(value = "/admin/tag")
 public class TagController {
+
+    Logger logger = LoggerFactory.getLogger(TagController.class);
 
     @Autowired
     private TagService tagService;
@@ -45,7 +47,7 @@ public class TagController {
         try {
             tagService.saveByTag(tag);
         } catch (Exception e) {
-            log.error("未知错误：{0}", e.getMessage());
+            logger.error("未知错误：{0}", e.getMessage());
         }
         return "redirect:/admin/tag";
     }
@@ -73,9 +75,9 @@ public class TagController {
     public String removeTag(@PathParam("tagId") Long tagId) {
         try {
             Tag tag = tagService.removeByTagId(tagId);
-            log.info("删除的标签：" + tag);
+            logger.info("删除的标签：" + tag);
         } catch (Exception e) {
-            log.error("未知错误：{0}", e.getMessage());
+            logger.error("未知错误：{0}", e.getMessage());
         }
         return "redirect:/admin/tag";
     }

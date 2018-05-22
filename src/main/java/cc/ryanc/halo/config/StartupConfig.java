@@ -7,8 +7,9 @@ import cc.ryanc.halo.service.AttachmentService;
 import cc.ryanc.halo.service.OptionsService;
 import cc.ryanc.halo.utils.HaloUtils;
 import cc.ryanc.halo.web.controller.core.BaseController;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Configuration;
@@ -22,9 +23,10 @@ import java.util.Map;
  * @date : 2017/12/22
  * @version : 1.0
  */
-@Slf4j
 @Configuration
 public class StartupConfig implements ApplicationListener<ContextRefreshedEvent>{
+
+    Logger logger = LoggerFactory.getLogger(StartupConfig.class);
 
     @Autowired
     private OptionsService optionsService;
@@ -53,7 +55,7 @@ public class StartupConfig implements ApplicationListener<ContextRefreshedEvent>
                 BaseController.THEME = "anatole";
             }
         }catch (Exception e){
-            log.error("加载主题设置失败：{0}",e.getMessage());
+            logger.error("加载主题设置失败：{0}",e.getMessage());
         }
     }
 
@@ -67,7 +69,7 @@ public class StartupConfig implements ApplicationListener<ContextRefreshedEvent>
                 HaloConst.OPTIONS = options;
             }
         }catch (Exception e){
-            log.error("加载设置选项失败：{0}",e.getMessage());
+            logger.error("加载设置选项失败：{0}",e.getMessage());
         }
     }
 
@@ -81,7 +83,7 @@ public class StartupConfig implements ApplicationListener<ContextRefreshedEvent>
                 HaloConst.ATTACHMENTS = attachments;
             }
         }catch (Exception e){
-            log.error("加载所有文件失败：{0}",e.getMessage());
+            logger.error("加载所有文件失败：{0}",e.getMessage());
         }
     }
 
@@ -96,7 +98,7 @@ public class StartupConfig implements ApplicationListener<ContextRefreshedEvent>
                 HaloConst.THEMES = themes;
             }
         }catch (Exception e){
-            log.error("加载主题失败：{0}",e.getMessage());
+            logger.error("加载主题失败：{0}",e.getMessage());
         }
     }
 }

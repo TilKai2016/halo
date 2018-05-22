@@ -2,7 +2,6 @@ package cc.ryanc.halo.config;
 
 import cc.ryanc.halo.web.interceptor.InstallInterceptor;
 import cc.ryanc.halo.web.interceptor.LoginInterceptor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +16,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @date : 2018/1/2
  * @version : 1.0
  */
-@Slf4j
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "cc.ryanc.halo.web.controller")

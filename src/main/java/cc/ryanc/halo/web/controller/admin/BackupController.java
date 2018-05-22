@@ -4,7 +4,8 @@ import cc.ryanc.halo.model.domain.Post;
 import cc.ryanc.halo.model.dto.HaloConst;
 import cc.ryanc.halo.service.PostService;
 import cc.ryanc.halo.utils.HaloUtils;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.ResourceUtils;
@@ -20,10 +21,11 @@ import java.util.List;
  * @version : 1.0
  * description : 备份
  */
-@Slf4j
 @Controller
 @RequestMapping(value = "/admin/backup")
 public class BackupController {
+
+    Logger logger = LoggerFactory.getLogger(BackupController.class);
 
     @Autowired
     private PostService postService;
@@ -31,7 +33,6 @@ public class BackupController {
     /**
      * 渲染备份页面
      *
-     * @param model model
      * @return 模板路径admin/admin_backup
      */
     @GetMapping
@@ -52,7 +53,7 @@ public class BackupController {
             String savePath = path.getAbsolutePath() + "/backup/database";
             HaloUtils.exportDatabase("localhost", "root", "123456", savePath, fileName, "testdb");
         } catch (Exception e) {
-            log.error("未知错误：{0}", e.getMessage());
+            logger.error("未知错误：{0}", e.getMessage());
         }
         return "redirect:/admin/backup";
     }
