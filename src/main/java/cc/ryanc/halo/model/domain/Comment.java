@@ -1,7 +1,5 @@
 package cc.ryanc.halo.model.domain;
 
-import lombok.Data;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -11,7 +9,6 @@ import java.util.Date;
  * @date : 2018/1/22
  * @version : 1.0
  */
-@Data
 @Entity
 @Table(name = "halo_comment")
 public class Comment implements Serializable {
@@ -21,15 +18,11 @@ public class Comment implements Serializable {
     /**
      * 评论id 自增
      */
-    @Id
-    @GeneratedValue
     private Long commentId;
 
     /**
      * 评论文章
      */
-    @ManyToOne(targetEntity = Post.class,fetch = FetchType.EAGER)
-    @JoinColumn(name = "post_id")
     private Post post;
 
     /**
@@ -65,7 +58,6 @@ public class Comment implements Serializable {
     /**
      * 评论内容
      */
-    @Lob
     private String commentContent;
 
     /**
@@ -87,4 +79,113 @@ public class Comment implements Serializable {
      * 是否是博主的评论 0:不是 1:是
      */
     private Integer isAdmin;
+
+    @Id
+    @GeneratedValue
+    public Long getCommentId() {
+        return commentId;
+    }
+
+    public void setCommentId(Long commentId) {
+        this.commentId = commentId;
+    }
+
+    @ManyToOne(targetEntity = Post.class,fetch = FetchType.EAGER)
+    @JoinColumn(name = "post_id")
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
+    }
+
+    public String getCommentAuthor() {
+        return commentAuthor;
+    }
+
+    public void setCommentAuthor(String commentAuthor) {
+        this.commentAuthor = commentAuthor;
+    }
+
+    public String getCommentAuthorEmail() {
+        return commentAuthorEmail;
+    }
+
+    public void setCommentAuthorEmail(String commentAuthorEmail) {
+        this.commentAuthorEmail = commentAuthorEmail;
+    }
+
+    public String getCommentAuthorUrl() {
+        return commentAuthorUrl;
+    }
+
+    public void setCommentAuthorUrl(String commentAuthorUrl) {
+        this.commentAuthorUrl = commentAuthorUrl;
+    }
+
+    public String getCommentAuthorIp() {
+        return commentAuthorIp;
+    }
+
+    public void setCommentAuthorIp(String commentAuthorIp) {
+        this.commentAuthorIp = commentAuthorIp;
+    }
+
+    public String getCommentAuthorAvatarMd5() {
+        return commentAuthorAvatarMd5;
+    }
+
+    public void setCommentAuthorAvatarMd5(String commentAuthorAvatarMd5) {
+        this.commentAuthorAvatarMd5 = commentAuthorAvatarMd5;
+    }
+
+    public Date getCommentDate() {
+        return commentDate;
+    }
+
+    public void setCommentDate(Date commentDate) {
+        this.commentDate = commentDate;
+    }
+
+    @Lob
+    public String getCommentContent() {
+        return commentContent;
+    }
+
+    public void setCommentContent(String commentContent) {
+        this.commentContent = commentContent;
+    }
+
+    public String getCommentAgent() {
+        return commentAgent;
+    }
+
+    public void setCommentAgent(String commentAgent) {
+        this.commentAgent = commentAgent;
+    }
+
+    public Long getCommentParent() {
+        return commentParent;
+    }
+
+    public void setCommentParent(Long commentParent) {
+        this.commentParent = commentParent;
+    }
+
+    public Integer getCommentStatus() {
+        return commentStatus;
+    }
+
+    public void setCommentStatus(Integer commentStatus) {
+        this.commentStatus = commentStatus;
+    }
+
+    public Integer getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(Integer isAdmin) {
+        this.isAdmin = isAdmin;
+    }
 }

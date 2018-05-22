@@ -36,7 +36,7 @@ public class CommentServiceImpl implements CommentService {
     /**
      * 删除评论
      *
-     * @param comment
+     * @param commentId
      */
     @Override
     public Optional<Comment> removeByCommentId(Long commentId) {

@@ -1,7 +1,5 @@
 package cc.ryanc.halo.model.dto;
 
-import lombok.Data;
-
 import java.io.Serializable;
 
 /**
@@ -9,7 +7,6 @@ import java.io.Serializable;
  * @date : 2018/1/3
  * @version : 1.0
  */
-@Data
 public class Theme implements Serializable {
 
     /**
@@ -21,4 +18,20 @@ public class Theme implements Serializable {
      * 是否支持设置
      */
     private boolean hasOptions;
+
+    public String getThemeName() {
+        return themeName;
+    }
+
+    public void setThemeName(String themeName) {
+        this.themeName = themeName;
+    }
+
+    public boolean isHasOptions() {
+        return hasOptions;
+    }
+
+    public void setHasOptions(boolean hasOptions) {
+        this.hasOptions = hasOptions;
+    }
 }

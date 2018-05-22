@@ -1,7 +1,5 @@
 package cc.ryanc.halo.model.domain;
 
-import lombok.Data;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,7 +12,6 @@ import java.util.Date;
  * @version : 1.0
  * @date : 2018/1/10
  */
-@Data
 @Entity
 @Table(name = "halo_attachment")
 public class Attachment implements Serializable {
@@ -24,8 +21,6 @@ public class Attachment implements Serializable {
     /**
      * 附件编号
      */
-    @Id
-    @GeneratedValue
     private Long attachId;
 
     /**
@@ -57,4 +52,62 @@ public class Attachment implements Serializable {
      * 上传时间
      */
     private Date attachCreated;
+
+    @Id
+    @GeneratedValue
+    public Long getAttachId() {
+        return attachId;
+    }
+
+    public void setAttachId(Long attachId) {
+        this.attachId = attachId;
+    }
+
+    public String getAttachName() {
+        return attachName;
+    }
+
+    public void setAttachName(String attachName) {
+        this.attachName = attachName;
+    }
+
+    public String getAttachPath() {
+        return attachPath;
+    }
+
+    public void setAttachPath(String attachPath) {
+        this.attachPath = attachPath;
+    }
+
+    public String getAttachSmallPath() {
+        return attachSmallPath;
+    }
+
+    public void setAttachSmallPath(String attachSmallPath) {
+        this.attachSmallPath = attachSmallPath;
+    }
+
+    public String getAttachType() {
+        return attachType;
+    }
+
+    public void setAttachType(String attachType) {
+        this.attachType = attachType;
+    }
+
+    public String getAttachSuffix() {
+        return attachSuffix;
+    }
+
+    public void setAttachSuffix(String attachSuffix) {
+        this.attachSuffix = attachSuffix;
+    }
+
+    public Date getAttachCreated() {
+        return attachCreated;
+    }
+
+    public void setAttachCreated(Date attachCreated) {
+        this.attachCreated = attachCreated;
+    }
 }

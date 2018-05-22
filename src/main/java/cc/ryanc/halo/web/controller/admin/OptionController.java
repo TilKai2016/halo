@@ -4,7 +4,8 @@ import cc.ryanc.halo.model.dto.HaloConst;
 import cc.ryanc.halo.model.dto.JsonResult;
 import cc.ryanc.halo.service.OptionsService;
 import freemarker.template.Configuration;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -17,10 +18,11 @@ import java.util.Map;
  * @version : 1.0
  * description : 设置选项控制器
  */
-@Slf4j
 @Controller
 @RequestMapping("/admin/option")
 public class OptionController {
+
+    Logger logger = LoggerFactory.getLogger(OptionController.class);
 
     @Autowired
     private OptionsService optionsService;

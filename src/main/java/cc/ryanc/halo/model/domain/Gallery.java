@@ -1,7 +1,5 @@
 package cc.ryanc.halo.model.domain;
 
-import lombok.Data;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,7 +11,6 @@ import java.io.Serializable;
  * @date : 2018/2/26
  * @version : 1.0
  */
-@Data
 @Entity
 @Table(name = "halo_gallery")
 public class Gallery implements Serializable {
@@ -23,8 +20,6 @@ public class Gallery implements Serializable {
     /**
      * 图片编号
      */
-    @Id
-    @GeneratedValue
     private Long galleryId;
 
     /**
@@ -56,4 +51,62 @@ public class Gallery implements Serializable {
      * 图片地址
      */
     private String galleryUrl;
+
+    @Id
+    @GeneratedValue
+    public Long getGalleryId() {
+        return galleryId;
+    }
+
+    public void setGalleryId(Long galleryId) {
+        this.galleryId = galleryId;
+    }
+
+    public String getGalleryName() {
+        return galleryName;
+    }
+
+    public void setGalleryName(String galleryName) {
+        this.galleryName = galleryName;
+    }
+
+    public String getGalleryDesc() {
+        return galleryDesc;
+    }
+
+    public void setGalleryDesc(String galleryDesc) {
+        this.galleryDesc = galleryDesc;
+    }
+
+    public String getGalleryDate() {
+        return galleryDate;
+    }
+
+    public void setGalleryDate(String galleryDate) {
+        this.galleryDate = galleryDate;
+    }
+
+    public String getGalleryLocation() {
+        return galleryLocation;
+    }
+
+    public void setGalleryLocation(String galleryLocation) {
+        this.galleryLocation = galleryLocation;
+    }
+
+    public String getGalleryThumbnailUrl() {
+        return galleryThumbnailUrl;
+    }
+
+    public void setGalleryThumbnailUrl(String galleryThumbnailUrl) {
+        this.galleryThumbnailUrl = galleryThumbnailUrl;
+    }
+
+    public String getGalleryUrl() {
+        return galleryUrl;
+    }
+
+    public void setGalleryUrl(String galleryUrl) {
+        this.galleryUrl = galleryUrl;
+    }
 }

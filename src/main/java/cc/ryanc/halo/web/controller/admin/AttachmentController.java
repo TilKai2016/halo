@@ -8,8 +8,9 @@ import cc.ryanc.halo.model.dto.LogsRecord;
 import cc.ryanc.halo.service.AttachmentService;
 import cc.ryanc.halo.service.LogsService;
 import cc.ryanc.halo.utils.HaloUtils;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -36,10 +37,11 @@ import java.util.*;
  * @version : 1.0
  * description: 附件
  */
-@Slf4j
 @Controller
 @RequestMapping(value = "/admin/attachments")
 public class AttachmentController {
+
+    Logger logger = LoggerFactory.getLogger(AttachmentController.class);
 
     @Autowired
     private AttachmentService attachmentService;
@@ -171,7 +173,7 @@ public class AttachmentController {
                 attachmentService.saveByAttachment(attachment);
 
                 updateConst();
-                log.info("上传文件[" + fileName + "]到[" + mediaPath.getAbsolutePath() + "]成功");
+                logger.info("上传文件[" + fileName + "]到[" + mediaPath.getAbsolutePath() + "]成功");
                 logsService.saveByLogs(
                         new Logs(LogsRecord.UPLOAD_FILE, fileName, HaloUtils.getIpAddr(request), new Date())
                 );
@@ -180,12 +182,12 @@ public class AttachmentController {
                 result.put("message", "上传成功！");
                 result.put("url", attachment.getAttachPath());
             } catch (Exception e) {
-                log.error("未知错误：{0}", e.getMessage());
+                logger.error("未知错误：{0}", e.getMessage());
                 result.put("success", 0);
                 result.put("message", "上传失败！");
             }
         } else {
-            log.error("文件不能为空");
+            logger.error("文件不能为空");
         }
         return result;
     }
@@ -243,7 +245,7 @@ public class AttachmentController {
             if (delFile.exists() && delFile.isFile()) {
                 if (delFile.delete()) {
                     updateConst();
-                    log.info("删除文件[" + delFileName + "]成功！");
+                    logger.info("删除文件[" + delFileName + "]成功！");
                     logsService.saveByLogs(
                             new Logs(LogsRecord.REMOVE_FILE, delFileName, HaloUtils.getIpAddr(request), new Date())
                     );

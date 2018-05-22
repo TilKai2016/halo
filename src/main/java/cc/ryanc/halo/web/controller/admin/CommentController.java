@@ -14,6 +14,8 @@ import cn.hutool.core.lang.Validator;
 import cn.hutool.crypto.SecureUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -39,10 +41,11 @@ import java.util.Map;
  * @version : 1.0
  * description : 评论系统管理
  */
-@Slf4j
 @Controller
 @RequestMapping(value = "/admin/comments")
 public class CommentController extends BaseController{
+
+    Logger logger = LoggerFactory.getLogger(CommentController.class);
 
     @Autowired
     private CommentService commentService;
@@ -94,7 +97,7 @@ public class CommentController extends BaseController{
         try {
             commentService.updateCommentStatus(commentId,2);
         }catch (Exception e){
-            log.error("未知错误：{0}",e.getMessage());
+            logger.error("未知错误：{0}",e.getMessage());
         }
         return "redirect:/admin/comments?status="+status;
     }
@@ -104,7 +107,6 @@ public class CommentController extends BaseController{
      *
      * @param commentId 评论编号
      * @param status 评论状态
-     * @param session session
      * @return 重定向到/admin/comments
      */
     @GetMapping("/revert")
@@ -146,7 +148,6 @@ public class CommentController extends BaseController{
      *
      * @param commentId commentId 评论编号
      * @param status status 评论状态
-     * @param session session session
      * @return string 重定向到/admin/comments
      */
     @GetMapping("/remove")
@@ -226,7 +227,7 @@ public class CommentController extends BaseController{
                 }
             }
         }catch (Exception e){
-            log.error("回复评论失败！{0}",e.getMessage());
+            logger.error("回复评论失败！{0}",e.getMessage());
         }
         return "redirect:/admin/comments";
     }

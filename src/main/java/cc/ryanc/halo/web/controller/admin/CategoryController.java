@@ -2,7 +2,8 @@ package cc.ryanc.halo.web.controller.admin;
 
 import cc.ryanc.halo.model.domain.Category;
 import cc.ryanc.halo.service.CategoryService;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,10 +18,11 @@ import java.util.Optional;
  * @version : 1.0
  * description : 分类目录控制器
  */
-@Slf4j
 @Controller
 @RequestMapping(value = "/admin/category")
 public class CategoryController {
+
+    Logger logger = LoggerFactory.getLogger(CategoryController.class);
 
     @Autowired
     private CategoryService categoryService;
@@ -46,7 +48,7 @@ public class CategoryController {
         try {
             categoryService.saveByCategory(category);
         } catch (Exception e) {
-            log.error("未知错误：{0}", e.getMessage());
+            logger.error("未知错误：{0}", e.getMessage());
         }
         return "redirect:/admin/category";
     }
@@ -74,9 +76,9 @@ public class CategoryController {
     public String removeCategory(@PathParam("cateId") Long cateId) {
         try {
             Category category = categoryService.removeByCateId(cateId);
-            log.info("删除的分类目录：" + category);
+            logger.info("删除的分类目录：" + category);
         } catch (Exception e) {
-            log.error("未知错误：{0}", e.getMessage());
+            logger.error("未知错误：{0}", e.getMessage());
         }
         return "redirect:/admin/category";
     }

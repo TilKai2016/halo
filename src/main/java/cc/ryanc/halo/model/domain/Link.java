@@ -1,7 +1,5 @@
 package cc.ryanc.halo.model.domain;
 
-import lombok.Data;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,7 +11,6 @@ import java.io.Serializable;
  * @date : 2017/11/14
  * @version : 1.0
  */
-@Data
 @Entity
 @Table(name = "halo_link")
 public class Link implements Serializable{

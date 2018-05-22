@@ -35,6 +35,9 @@ public class HaloConst {
      */
     public static String USER_SESSION_KEY = "user_session";
 
+    /**
+     * 帖子(文章)
+     */
     public static String POST_TYPE_POST = "post";
 
     public static String POST_TYPE_PAGE = "page";

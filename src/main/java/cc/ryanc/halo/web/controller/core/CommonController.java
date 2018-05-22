@@ -1,7 +1,6 @@
 package cc.ryanc.halo.web.controller.core;
 
 import cc.ryanc.halo.model.dto.HaloConst;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
  * @version : 1.0
  * description:
  */
-@Slf4j
 @Controller
 public class CommonController implements ErrorController {
 

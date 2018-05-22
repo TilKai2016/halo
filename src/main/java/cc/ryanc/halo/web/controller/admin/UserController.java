@@ -5,7 +5,8 @@ import cc.ryanc.halo.model.dto.JsonResult;
 import cc.ryanc.halo.service.UserService;
 import cn.hutool.crypto.SecureUtil;
 import freemarker.template.Configuration;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -18,10 +19,11 @@ import javax.servlet.http.HttpSession;
  * @version : 1.0
  * description: 用户控制
  */
-@Slf4j
 @Controller
 @RequestMapping(value = "/admin/profile")
 public class UserController {
+
+    Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
     private UserService userService;

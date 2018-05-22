@@ -6,7 +6,6 @@ import cc.ryanc.halo.model.dto.HaloConst;
 import cc.ryanc.halo.service.CommentService;
 import cc.ryanc.halo.service.PostService;
 import cc.ryanc.halo.web.controller.core.BaseController;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -26,7 +25,6 @@ import java.util.List;
  * @version : 1.0
  * @date : 2018/4/26
  */
-@Slf4j
 @Controller
 @RequestMapping(value = "/archives")
 public class FrontArchiveController extends BaseController {

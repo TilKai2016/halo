@@ -8,8 +8,9 @@ import cc.ryanc.halo.service.LinkService;
 import cc.ryanc.halo.service.LogsService;
 import cc.ryanc.halo.service.PostService;
 import cc.ryanc.halo.utils.HaloUtils;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -32,10 +33,11 @@ import java.util.Optional;
  * @version : 1.0
  * description : 预设页面，自定义页面
  */
-@Slf4j
 @Controller
 @RequestMapping(value = "/admin/page")
 public class PageController {
+
+    Logger logger = LoggerFactory.getLogger(PageController.class);
 
     @Autowired
     private LinkService linkService;
@@ -99,9 +101,9 @@ public class PageController {
     public String saveLink(@ModelAttribute Link link) {
         try {
             Link backLink = linkService.saveByLink(link);
-            log.info("保存成功，数据为：" + backLink);
+            logger.info("保存成功，数据为：" + backLink);
         } catch (Exception e) {
-            log.error("未知错误：{0}", e.getMessage());
+            logger.error("未知错误：{0}", e.getMessage());
         }
         return "redirect:/admin/page/links";
     }
@@ -116,9 +118,9 @@ public class PageController {
     public String removeLink(@PathParam("linkId") Long linkId) {
         try {
             Link link = linkService.removeByLinkId(linkId);
-            log.info("删除的友情链接：" + link);
+            logger.info("删除的友情链接：" + link);
         } catch (Exception e) {
-            log.error("未知错误：{0}", e.getMessage());
+            logger.error("未知错误：{0}", e.getMessage());
         }
         return "redirect:/admin/page/links";
     }
@@ -187,7 +189,7 @@ public class PageController {
         try {
             galleryService.removeByGalleryId(galleryId);
         } catch (Exception e) {
-            log.error("删除图片失败：{0}", e.getMessage());
+            logger.error("删除图片失败：{0}", e.getMessage());
             return false;
         }
         return true;
@@ -230,7 +232,7 @@ public class PageController {
             postService.saveByPost(post);
             logsService.saveByLogs(new Logs(LogsRecord.PUSH_PAGE, post.getPostTitle(), HaloUtils.getIpAddr(request), new Date()));
         } catch (Exception e) {
-            log.error("未知错误：{0}", e.getMessage());
+            logger.error("未知错误：{0}", e.getMessage());
         }
     }
 
