@@ -29,8 +29,8 @@ task sourceJar(type: Jar, dependsOn: classes) {
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
     from javadoc.destinationDir
+    classifier = 'javadoc'
 }
 
 publishing {
