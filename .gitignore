@@ -1,5 +1,7 @@
+.gradle
 target/
 logs/
+out/
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###

@@ -1,0 +1,44 @@
+apply plugin: 'java' // Use Java plugin, create a java project.
+apply plugin: 'maven-publish' // provides a new DSL to support publishing artifacts to Maven repositories, which improves on the existing DSL.
+apply from : IDE_GRADLE
+
+// Java version compatibility to use when compiling Java source.
+sourceCompatibility = 1.8
+// Java version to generate classes for.
+targetCompatibility = 1.8
+
+// Compiles Java source files.
+tasks.withType(JavaCompile) {
+    //enable compilation in a separate daemon process
+    options.fork = true
+    //enable incremental compilation
+    options.incremental = true
+    /*
+     * The character encoding to be used when reading source files.
+     * Defaults to null, in which case the platform default encoding will be used.
+     */
+    options.encoding = "UTF-8"
+    // without-convert(generic type) check, 应用于未经转换的(泛型)检查、过时API检查
+    options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+}
+
+// used to generate a (project)-sources.jar
+task sourceJar(type: Jar, dependsOn: classes) {
+    from sourceSets.main.allSource
+    classifier = 'sources'
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            artifact sourceJar
+            artifact javadocJar
+        }
+    }
+}
