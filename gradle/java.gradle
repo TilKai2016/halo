@@ -33,6 +33,7 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
     classifier = 'javadoc'
 }
 
+// Configures the PublishingExtension added by the publishing plugin.
 publishing {
     publications {
         mavenJava(MavenPublication) {
