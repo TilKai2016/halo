@@ -1,13 +1,10 @@
 package cc.ryanc.halo.model.dto;
 
-import lombok.Data;
-
 /**
  * @author : RYAN0UP
  * @version : 1.0
  * @date : 2018/5/24
  */
-@Data
 public class JsonResult {
 
     /**

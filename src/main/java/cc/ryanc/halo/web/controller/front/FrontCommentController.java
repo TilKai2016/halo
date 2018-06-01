@@ -11,7 +11,6 @@ import cc.ryanc.halo.service.UserService;
 import cc.ryanc.halo.utils.HaloUtils;
 import cn.hutool.core.util.URLUtil;
 import cn.hutool.http.HtmlUtil;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

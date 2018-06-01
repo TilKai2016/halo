@@ -11,7 +11,6 @@ import cc.ryanc.halo.service.TagService;
 import cc.ryanc.halo.utils.HaloUtils;
 import cc.ryanc.halo.web.controller.core.BaseController;
 import cn.hutool.http.HtmlUtil;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,7 +41,7 @@ import java.util.Optional;
 @RequestMapping(value = "/admin/posts")
 public class PostController extends BaseController{
 
-    Logger logger = LoggerFactory.getLogger(PostController.class);
+    Logger log = LoggerFactory.getLogger(PostController.class);
 
     @Autowired
     private PostService postService;
@@ -103,7 +102,7 @@ public class PostController extends BaseController{
             Pageable pageable = PageRequest.of(page,size,sort);
             model.addAttribute("posts",postService.searchPosts(keyword,pageable));
         }catch (Exception e){
-            logger.error("未知错误：{0}",e.getMessage());
+            log.error("未知错误：{0}",e.getMessage());
         }
         return "admin/admin_post";
     }
@@ -195,7 +194,7 @@ public class PostController extends BaseController{
             postService.saveByPost(post);
             logsService.saveByLogs(new Logs(LogsRecord.PUSH_POST,post.getPostTitle(),HaloUtils.getIpAddr(request),new Date()));
         }catch (Exception e){
-            logger.error("未知错误：", e.getMessage());
+            log.error("未知错误：", e.getMessage());
         }
     }
 
@@ -260,9 +259,9 @@ public class PostController extends BaseController{
     public String moveToTrash(@RequestParam("postId") Long postId){
         try{
             postService.updatePostStatus(postId,2);
-            logger.info("编号为"+postId+"的文章已被移到回收站");
+            log.info("编号为"+postId+"的文章已被移到回收站");
         }catch (Exception e){
-            logger.error("未知错误：{0}",e.getMessage());
+            log.error("未知错误：{0}",e.getMessage());
         }
         return "redirect:/admin/posts";
     }
@@ -278,9 +277,9 @@ public class PostController extends BaseController{
                                 @RequestParam("status") Integer status){
         try{
             postService.updatePostStatus(postId,0);
-            logger.info("编号为"+postId+"的文章已改变为发布状态");
+            log.info("编号为"+postId+"的文章已改变为发布状态");
         }catch (Exception e){
-            logger.error("未知错误：{0}",e.getMessage());
+            log.error("未知错误：{0}",e.getMessage());
         }
         return "redirect:/admin/posts?status="+status;
     }
@@ -298,7 +297,7 @@ public class PostController extends BaseController{
             postService.removeByPostId(postId);
             logsService.saveByLogs(new Logs(LogsRecord.REMOVE_POST,post.get().getPostTitle(),HaloUtils.getIpAddr(request),new Date()));
         }catch (Exception e){
-            logger.error("未知错误：{0}",e.getMessage());
+            log.error("未知错误：{0}",e.getMessage());
         }
         if(StringUtils.equals(HaloConst.POST_TYPE_POST,postType)){
             return "redirect:/admin/posts?status=2";

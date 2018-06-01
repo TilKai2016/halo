@@ -43,6 +43,7 @@ allprojects {
         compile ("org.apache.commons:commons-lang3:3.7")
         compile ("org.jsoup:jsoup:1.9.2")
         compile ("com.google.guava:guava:18.0")
+        compile ("cn.hutool:hutool-all:4.0.12")
         runtime ("mysql:mysql-connector-java:5.1.46")
         runtime ("com.h2database:h2:1.4.197")
         testCompile ("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")

@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
 @RequestMapping(value = "/admin/profile")
 public class UserController {
 
-    Logger logger = LoggerFactory.getLogger(UserController.class);
+    Logger log = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
     private UserService userService;

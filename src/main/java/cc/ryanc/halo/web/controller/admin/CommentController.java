@@ -12,7 +12,6 @@ import cc.ryanc.halo.utils.HaloUtils;
 import cc.ryanc.halo.web.controller.core.BaseController;
 import cn.hutool.core.lang.Validator;
 import cn.hutool.crypto.SecureUtil;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,7 +44,7 @@ import java.util.Map;
 @RequestMapping(value = "/admin/comments")
 public class CommentController extends BaseController{
 
-    Logger logger = LoggerFactory.getLogger(CommentController.class);
+    Logger log = LoggerFactory.getLogger(CommentController.class);
 
     @Autowired
     private CommentService commentService;
@@ -97,7 +96,7 @@ public class CommentController extends BaseController{
         try {
             commentService.updateCommentStatus(commentId,2);
         }catch (Exception e){
-            logger.error("未知错误：{0}",e.getMessage());
+            log.error("未知错误：{0}",e.getMessage());
         }
         return "redirect:/admin/comments?status="+status;
     }
@@ -227,7 +226,7 @@ public class CommentController extends BaseController{
                 }
             }
         }catch (Exception e){
-            logger.error("回复评论失败！{0}",e.getMessage());
+            log.error("回复评论失败！{0}",e.getMessage());
         }
         return "redirect:/admin/comments";
     }

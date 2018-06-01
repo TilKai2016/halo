@@ -10,7 +10,6 @@ import cc.ryanc.halo.utils.HaloUtils;
 import cc.ryanc.halo.web.controller.core.BaseController;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.ZipUtil;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,7 +38,7 @@ import java.util.List;
 @RequestMapping(value = "/admin/themes")
 public class ThemeController extends BaseController {
 
-    Logger logger = LoggerFactory.getLogger(ThemeController.class);
+    Logger log = LoggerFactory.getLogger(ThemeController.class);
 
     @Autowired
     private OptionsService optionsService;
@@ -78,7 +77,7 @@ public class ThemeController extends BaseController {
             optionsService.saveOption("theme", siteTheme);
             //设置主题
             BaseController.THEME = siteTheme;
-            logger.info("已将主题改变为：" + siteTheme);
+            log.info("已将主题改变为：" + siteTheme);
             logsService.saveByLogs(
                     new Logs(LogsRecord.CHANGE_THEME, "更换为" + siteTheme, HaloUtils.getIpAddr(request), new Date())
             );
@@ -106,7 +105,7 @@ public class ThemeController extends BaseController {
                 File basePath = new File(ResourceUtils.getURL("classpath:").getPath());
                 File themePath = new File(basePath.getAbsolutePath(), new StringBuffer("templates/themes/").append(file.getOriginalFilename()).toString());
                 file.transferTo(themePath);
-                logger.info("上传主题成功，路径：" + themePath.getAbsolutePath());
+                log.info("上传主题成功，路径：" + themePath.getAbsolutePath());
                 logsService.saveByLogs(
                         new Logs(LogsRecord.UPLOAD_THEME, file.getOriginalFilename(), HaloUtils.getIpAddr(request), new Date())
                 );
@@ -140,7 +139,7 @@ public class ThemeController extends BaseController {
             HaloConst.THEMES.clear();
             HaloConst.THEMES = HaloUtils.getThemes();
         } catch (Exception e) {
-            logger.error("删除主题失败：{0}", e.getMessage());
+            log.error("删除主题失败：{0}", e.getMessage());
         }
         return "redirect:/admin/themes";
     }
@@ -186,7 +185,7 @@ public class ThemeController extends BaseController {
             File themesPath = new File(basePath.getAbsolutePath(), new StringBuffer("templates/themes/").append(BaseController.THEME).append("/").append(tplName).toString());
             tplContent = HaloUtils.getFileContent(themesPath.getAbsolutePath());
         } catch (Exception e) {
-            logger.error("获取模板文件错误：{0}", e.getMessage());
+            log.error("获取模板文件错误：{0}", e.getMessage());
         }
         return tplContent;
     }

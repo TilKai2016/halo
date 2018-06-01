@@ -15,7 +15,6 @@ import cc.ryanc.halo.web.controller.core.BaseController;
 import cn.hutool.core.lang.Validator;
 import cn.hutool.crypto.SecureUtil;
 import cn.hutool.http.HtmlUtil;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,7 +42,7 @@ import java.util.List;
 @RequestMapping(value = "/admin")
 public class AdminController extends BaseController {
 
-    Logger logger = LoggerFactory.getLogger(AdminController.class);
+    Logger log = LoggerFactory.getLogger(AdminController.class);
 
     @Autowired
     private PostService postService;
@@ -166,7 +165,7 @@ public class AdminController extends BaseController {
         User user = (User) session.getAttribute(HaloConst.USER_SESSION_KEY);
         logsService.saveByLogs(new Logs(LogsRecord.LOGOUT, user.getUserName(), HaloUtils.getIpAddr(request), new Date()));
         session.invalidate();
-        logger.info("用户[" + user.getUserName() + "]退出登录");
+        log.info("用户[" + user.getUserName() + "]退出登录");
         return "redirect:/admin/login";
     }
 
@@ -199,7 +198,7 @@ public class AdminController extends BaseController {
         try {
             logsService.removeAllLogs();
         } catch (Exception e) {
-            logger.error("未知错误：" + e.getMessage());
+            log.error("未知错误：" + e.getMessage());
         }
         return "redirect:/admin";
     }

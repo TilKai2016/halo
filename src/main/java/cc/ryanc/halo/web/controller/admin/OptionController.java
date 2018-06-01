@@ -22,7 +22,7 @@ import java.util.Map;
 @RequestMapping("/admin/option")
 public class OptionController {
 
-    Logger logger = LoggerFactory.getLogger(OptionController.class);
+    Logger log = LoggerFactory.getLogger(OptionController.class);
 
     @Autowired
     private OptionsService optionsService;

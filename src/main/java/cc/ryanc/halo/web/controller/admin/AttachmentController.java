@@ -41,7 +41,7 @@ import java.util.*;
 @RequestMapping(value = "/admin/attachments")
 public class AttachmentController {
 
-    Logger logger = LoggerFactory.getLogger(AttachmentController.class);
+    Logger log = LoggerFactory.getLogger(AttachmentController.class);
 
     @Autowired
     private AttachmentService attachmentService;
@@ -173,7 +173,7 @@ public class AttachmentController {
                 attachmentService.saveByAttachment(attachment);
 
                 updateConst();
-                logger.info("上传文件[" + fileName + "]到[" + mediaPath.getAbsolutePath() + "]成功");
+                log.info("上传文件[" + fileName + "]到[" + mediaPath.getAbsolutePath() + "]成功");
                 logsService.saveByLogs(
                         new Logs(LogsRecord.UPLOAD_FILE, fileName, HaloUtils.getIpAddr(request), new Date())
                 );
@@ -182,12 +182,12 @@ public class AttachmentController {
                 result.put("message", "上传成功！");
                 result.put("url", attachment.getAttachPath());
             } catch (Exception e) {
-                logger.error("未知错误：{0}", e.getMessage());
+                log.error("未知错误：{0}", e.getMessage());
                 result.put("success", 0);
                 result.put("message", "上传失败！");
             }
         } else {
-            logger.error("文件不能为空");
+            log.error("文件不能为空");
         }
         return result;
     }
@@ -245,7 +245,7 @@ public class AttachmentController {
             if (delFile.exists() && delFile.isFile()) {
                 if (delFile.delete()) {
                     updateConst();
-                    logger.info("删除文件[" + delFileName + "]成功！");
+                    log.info("删除文件[" + delFileName + "]成功！");
                     logsService.saveByLogs(
                             new Logs(LogsRecord.REMOVE_FILE, delFileName, HaloUtils.getIpAddr(request), new Date())
                     );
