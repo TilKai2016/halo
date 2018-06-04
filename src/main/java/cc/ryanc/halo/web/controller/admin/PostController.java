@@ -202,7 +202,7 @@ public class PostController extends BaseController{
     /**
      * 自动保存文章为草稿
      *
-     * @param post post
+     * @param postId post
      * @param session session
      * @return 文章的编号
      */

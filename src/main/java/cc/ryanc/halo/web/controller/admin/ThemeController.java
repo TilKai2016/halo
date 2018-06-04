@@ -101,6 +101,7 @@ public class ThemeController extends BaseController {
                                HttpServletRequest request) {
         try {
             if (!file.isEmpty()) {
+
                 //获取项目根路径
                 File basePath = new File(ResourceUtils.getURL("classpath:").getPath());
                 File themePath = new File(basePath.getAbsolutePath(), new StringBuffer("templates/themes/").append(file.getOriginalFilename()).toString());
