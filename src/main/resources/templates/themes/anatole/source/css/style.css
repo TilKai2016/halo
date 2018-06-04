@@ -111,12 +111,12 @@ a:hover, a:active {
 .content {
   height: auto;
   float: right;
-  width: 80%;
+  width: 70%;
   margin-top: 60px;
 }
 
 .page-top {
-  width: 80%;
+  width: 70%;
   position: fixed;
   right: 0;
   z-index: 3;
@@ -171,7 +171,7 @@ a:hover, a:active {
 }
 
 .sidebar {
-  width: 20%;
+  width: 30%;
   -webkit-background-size: cover;
   background-size: cover;
   /*background-color: #fff;*/
@@ -184,9 +184,15 @@ a:hover, a:active {
   z-index: 4;
   border-right: 1px solid #f2f2f2;
 }
+.tag-cloud {
+  width: 100%;
+  height: 300px;
+  text-align: center;
+  /*padding-top: 440px;*/
+}
 .sidebar .logo-title {
   text-align: center;
-  padding-top: 240px;
+  padding-top: 100px;
 }
 .sidebar .logo-title .description {
   font-size: 14px;
