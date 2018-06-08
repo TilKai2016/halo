@@ -26,12 +26,12 @@
     $( '.tag-cloud' ).svg3DTagCloud(
         {
             entries: entries, // 一个对象数组，用于初始化标签。
-            width : "45%", // 标签云的宽度
-            height : "45%", // 标签云的高度
-            radius : "45%", // 标签云的半径
-            radiusMin: "5%", // 标签云的最小半径
-            bgDraw: true,
-            bgColor : "#deefd6",
+            width : "85%", // 标签云的宽度
+            height : "85%", // 标签云的高度
+            radius : "85%", // 标签云的半径
+            radiusMin: "75%", // 标签云的最小半径
+            bgDraw: false,
+            // bgColor : "#deefd7",
             opacityOver: 1.00,
             opacityOut: 0.05,
             opacitySpeed: 6,
