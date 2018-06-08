@@ -1,6 +1,6 @@
 <#include "module/macro.ftl">
 <@head title="${post.postTitle} · ${options.blog_title?default('Anatole')}" keywords="${post.postTitle},${options.seo_keywords?default('Anatole')}" description="${post.postSummary?if_exists}"></@head>
-<#include "module/sidebar.ftl">
+<#include "module/sidebar-left.ftl">
 <div class="main">
     <link href="/anatole/source/plugins/prism/prism.css" type="text/css" rel="stylesheet" />
     <style>

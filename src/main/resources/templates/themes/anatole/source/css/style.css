@@ -116,10 +116,11 @@ a:hover, a:active {
 }
 
 .page-top {
-  width: 70%;
-  position: fixed;
-  right: 0;
+  top: 0px;
   z-index: 3;
+  width: 56%;
+  position: fixed;
+  /*right: 0;*main/
   /*background-color: #fff;*/
   background-color: #deefd6;
   height: 60px;
@@ -170,8 +171,15 @@ a:hover, a:active {
   padding-right: 40px;
 }
 
-.sidebar {
-  width: 30%;
+.tag-cloud {
+  width: 100%;
+  height: 300px;
+  text-align: center;
+  /*padding-top: 440px;*/
+}
+
+.sidebar-left {
+  width: 22%;
   -webkit-background-size: cover;
   background-size: cover;
   /*background-color: #fff;*/
@@ -182,26 +190,20 @@ a:hover, a:active {
   left: 0;
   position: fixed;
   z-index: 4;
-  border-right: 1px solid #f2f2f2;
+  /*border-right: 1px solid #f2f2f2;*/
 }
-.tag-cloud {
-  width: 100%;
-  height: 300px;
-  text-align: center;
-  /*padding-top: 440px;*/
-}
-.sidebar .logo-title {
+.sidebar-left .logo-title {
   text-align: center;
   padding-top: 100px;
 }
-.sidebar .logo-title .description {
+.sidebar-left .logo-title .description {
   font-size: 14px;
   color: #565654;
 }
-.sidebar .logo-title .logo {
+.sidebar-left .logo-title .logo {
   margin: 0 auto;
 }
-.sidebar .logo-title .title h3 {
+.sidebar-left .logo-title .title h3 {
   text-transform: uppercase;
   font-size: 2rem;
   font-weight: bold;
@@ -209,31 +211,95 @@ a:hover, a:active {
   line-height: 1;
   margin: 0;
 }
-.sidebar .logo-title .title a {
+.sidebar-left .logo-title .title a {
   text-decoration: none;
   color: #464646;
   font-size: 2rem;
   font-weight: bold;
 }
-.sidebar .social-links {
+.sidebar-left .social-links {
   list-style: none;
   padding: 0;
   font-size: 14px;
   text-align: center;
 }
-.sidebar .social-links i {
+.sidebar-left .social-links i {
   margin-right: 3px;
 }
-.sidebar .social-links li {
+.sidebar-left .social-links li {
   display: inline;
   padding: 0 4px;
   line-height: 0;
 }
-.sidebar .social-links a {
+.sidebar-left .social-links a {
   color: #565654;
 }
-.sidebar .social-links a:hover {
+.sidebar-left .social-links a:hover {
   color: #4786D6;
+}
+
+.sidebar-right {
+  width: 22%;
+  -webkit-background-size: cover;
+  background-size: cover;
+  /*background-color: #fff;*/
+  background-color: #deefd6;
+  height: 100%;
+  transition: 0.8s;
+  top: 0;
+  right: 0;
+  position: fixed;
+  z-index: 4;
+  /*border-left: 1px solid #f2f2f2;*/
+}
+.sidebar-right .logo-title {
+  text-align: center;
+  padding-top: 100px;
+}
+.sidebar-right .logo-title .description {
+  font-size: 14px;
+  color: #565654;
+}
+.sidebar-right .logo-title .logo {
+  margin: 0 auto;
+}
+.sidebar-right .logo-title .title h3 {
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  line-height: 1;
+  margin: 0;
+}
+.sidebar-right .logo-title .title a {
+  text-decoration: none;
+  color: #464646;
+  font-size: 2rem;
+  font-weight: bold;
+}
+.sidebar-right .social-links {
+  list-style: none;
+  padding: 0;
+  font-size: 14px;
+  text-align: center;
+}
+.sidebar-right .social-links i {
+  margin-right: 3px;
+}
+.sidebar-right .social-links li {
+  display: inline;
+  padding: 0 4px;
+  line-height: 0;
+}
+.sidebar-right .social-links a {
+  color: #565654;
+}
+.sidebar-right .social-links a:hover {
+  color: #4786D6;
+}
+
+.post-overview {
+  margin-top: 85px;
 }
 
 .post {

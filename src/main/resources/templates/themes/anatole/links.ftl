@@ -1,6 +1,6 @@
 <#include "module/macro.ftl">
 <@head title="友情链接 · ${options.blog_title?default('Anatole')}" keywords="${options.seo_keywords?default('Anatole')}" description="${options.seo_desc?default('Anatole')}"></@head>
-<#include "module/sidebar.ftl">
+<#include "module/sidebar-left.ftl">
 <div class="main">
     <#include "module/page-top.ftl">
     <div class="autopagerize_page_element">

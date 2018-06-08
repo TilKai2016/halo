@@ -1,3 +1,5 @@
+<div class = "post-overview">
+
 <#list posts.content as post>
     <div class="post animated fadeInDown">
         <div class="post-title">
@@ -31,3 +33,21 @@
         </div>
     </div>
 </#list>
+</div>
+
+<style type="text/css">
+    .post .meta .info {
+        background: linear-gradient(90deg,  blue 0%, green 100%);
+        background-position: 100% 0;
+        animation: bgSize 5s infinite ease-in-out alternate;
+    }
+
+    @keyframes bgSize {
+        0% {
+            background-size: 300% 100%;
+        }
+        100% {
+            background-size: 100% 100%;
+        }
+    }
+</style>

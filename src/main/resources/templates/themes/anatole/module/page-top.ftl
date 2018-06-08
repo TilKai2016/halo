@@ -1,4 +1,4 @@
-<div class="page-top animated fadeInDown">
+<div class="page-top animated fadeInDown animationTwo">
     <#--头部页面导航，如"首页"、"归档"、"标签"等-->
     <div class="nav">
         <@commonTag method="menus">
