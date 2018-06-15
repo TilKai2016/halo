@@ -9,7 +9,6 @@
     <div class="middle">
         <#include "module/page-top.ftl">
         <#include "module/post_entry.ftl">
-    </div>
     <#if posts.totalPages gt 1>
         <div class="pagination">
             <ul class="clearfix">
@@ -32,6 +31,7 @@
             </ul>
         </div>
     </#if>
+    </div>
     <div class="left" >
         <#include "module/sidebar-left.ftl">
     </div>
@@ -42,18 +42,4 @@
 </div>
 
 <style type="text/css">
-    .left{
-        width: 22%;
-        float: left;
-    }
-    .middle{
-
-        margin-left: 22%;
-        margin-right: 22%;
-    }
-    .right{
-        width: 22%;
-        float: right;
-        background-color: #00a0dc;
-    }
 </style>

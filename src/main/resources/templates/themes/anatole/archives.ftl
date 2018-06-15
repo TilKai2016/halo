@@ -1,7 +1,8 @@
 <#include "module/macro.ftl">
 <@head title="归档 · ${options.blog_title?default('Anatole')}" keywords="文章归档,${options.seo_keywords?default('Anatole')}" description="${options.seo_desc?default('Anatole')}"></@head>
 <#include "module/sidebar-left.ftl">
-<div class="main">
+<div class="container">
+    <div class="middle">
     <#include "module/page-top.ftl">
     <div class="autopagerize_page_element">
         <div class="content">
@@ -27,6 +28,13 @@
                 </ul>
             </div>
         </div>
+    </div>
+        </div>
+    <div class="left" >
+        <#include "module/sidebar-left.ftl">
+    </div>
+    <div class="right">
+        <#include "module/sidebar-right.ftl">
     </div>
 </div>
 <@footer></@footer>

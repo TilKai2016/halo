@@ -1,16 +1,19 @@
 @charset "UTF-8";
+
 html {
-  background-color: #fff;
+  /*background-color: #fff;*/
+  /* 添加抗锯齿渲染*/
   -webkit-font-smoothing: antialiased;
 }
 
 body {
-  color: rgba(0, 0, 0, 0.5);
-  font-family: 'PingHei', 'PingFang SC', Helvetica Neue, 'Work Sans', 'Hiragino Sans GB', 'Microsoft YaHei', SimSun, sans-serif;
+  /*color: rgba(0, 0, 0, 0.5);*/
+  /*将多个字体作为回退保存，当浏览器不支持第一个字体时，会尝试下一个*/
+  font-family: 'Monaco','PingHei', 'PingFang SC', Helvetica Neue, 'Work Sans', 'Hiragino Sans GB', 'Microsoft YaHei', SimSun, sans-serif;
   font-size: 15px;
   width: 100%;
   margin: 0 auto 30px auto;
-  background-color: #fff;
+  /*background-color: #fff;*/
 }
 
 p {
@@ -35,6 +38,24 @@ a:link, a:visited {
 
 a:hover, a:active {
   color: #4786D6;
+}
+
+/*
+圣杯布局
+ */
+.container .left{
+  width: 22%;
+  float: left;
+}
+.container .middle{
+
+  margin-left: 22%;
+  margin-right: 22%;
+}
+.container .right{
+  width: 22%;
+  float: right;
+  background-color: #00a0dc;
 }
 
 /*basic styles ends*/
@@ -120,9 +141,6 @@ a:hover, a:active {
   z-index: 3;
   width: 56%;
   position: fixed;
-  /*right: 0;*main/
-  /*background-color: #fff;*/
-  background-color: #deefd6;
   height: 60px;
   border-bottom: 1px solid #f2f2f2;
 }
@@ -175,22 +193,18 @@ a:hover, a:active {
   width: 100%;
   height: 300px;
   text-align: center;
-  /*padding-top: 440px;*/
 }
 
 .sidebar-left {
   width: 22%;
   -webkit-background-size: cover;
   background-size: cover;
-  /*background-color: #fff;*/
-  background-color: #deefd6;
   height: 100%;
   transition: 0.8s;
   top: 0;
   left: 0;
   position: fixed;
   z-index: 4;
-  /*border-right: 1px solid #f2f2f2;*/
 }
 .sidebar-left .logo-title {
   text-align: center;
@@ -242,15 +256,12 @@ a:hover, a:active {
   width: 22%;
   -webkit-background-size: cover;
   background-size: cover;
-  /*background-color: #fff;*/
-  background-color: #deefd6;
   height: 100%;
   transition: 0.8s;
   top: 0;
   right: 0;
   position: fixed;
   z-index: 4;
-  /*border-left: 1px solid #f2f2f2;*/
 }
 .sidebar-right .logo-title {
   text-align: center;

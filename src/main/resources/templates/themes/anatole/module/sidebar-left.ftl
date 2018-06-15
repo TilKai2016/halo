@@ -32,23 +32,23 @@
 </div>
 
 <style type="text/css">
-    .animationOne {
-        background: linear-gradient(90deg,#8e9eab 1%, #eef2f3 100%);
-        background-position: 100% 0;
-        animation: bgSize1 5s infinite  alternate;
-    }
+    /*.animationOne {*/
+        /*background: linear-gradient(90deg,#8e9eab 1%, #eef2f3 100%);*/
+        /*background-position: 100% 0;*/
+        /*animation: bgSize1 5s infinite  alternate;*/
+    /*}*/
 
-    .animationTwo {
-        background: linear-gradient(90deg, #eef2f3 1%, #eef2f3 100%);
-        background-position: 100% 0;
-        animation: bgSize2 5s infinite alternate;
-    }
+    /*.animationTwo {*/
+        /*background: linear-gradient(90deg, #eef2f3 1%, #eef2f3 100%);*/
+        /*background-position: 100% 0;*/
+        /*animation: bgSize2 5s infinite alternate;*/
+    /*}*/
 
-    .animationThree {
-        background: linear-gradient(90deg, #eef2f3 1%, #abbaab 100%);
-        background-position:0 100%;
-        animation: bgSize3 5s infinite alternate;
-    }
+    /*.animationThree {*/
+        /*background: linear-gradient(90deg, #eef2f3 1%, #abbaab 100%);*/
+        /*background-position:0 100%;*/
+        /*animation: bgSize3 5s infinite alternate;*/
+    /*}*/
 
     /*@keyframes bgSize1 {*/
         /*0% {*/
@@ -66,12 +66,12 @@
             /*background-size: 100% 300%;*/
         /*}*/
     /*}*/
-    @keyframes bgSize3 {
-        0% {
-            background-size: 300% 100%;
-        }
-        100% {
-            background-size: 100% 100%;
-        }
-    }
+    /*@keyframes bgSize3 {*/
+        /*0% {*/
+            /*background-size: 300% 100%;*/
+        /*}*/
+        /*100% {*/
+            /*background-size: 100% 100%;*/
+        /*}*/
+    /*}*/
 </style>

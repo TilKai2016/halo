@@ -35,7 +35,7 @@
     }
 
     .container-1 input#search {
-        background: linear-gradient(90deg, #eef2f3 1%, #abbaab 100%);
+        /*background: linear-gradient(90deg, #eef2f3 1%, #abbaab 100%);*/
         background-position:0 100%;
         animation: bgSize3 5s infinite alternate;
     }
