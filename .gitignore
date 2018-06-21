@@ -33,3 +33,10 @@ nbdist/
 ### VS Code ###
 *.project
 *.factorypath
+
+~/
+
+out/
+
+# gradle
+.gradle/
