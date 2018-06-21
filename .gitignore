@@ -34,8 +34,6 @@ nbdist/
 *.project
 *.factorypath
 
-~/
-
 out/
 
 # gradle
