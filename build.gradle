@@ -1,0 +1,40 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group = 'cc.ryanc'
+version = 'latest'
+
+description = """halo"""
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+
+
+repositories {
+        
+     maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+     maven { url "http://repo.maven.apache.org/maven2" }
+}
+dependencies {
+    compile(group: 'org.springframework.boot', name: 'spring-boot-starter-web', version:'2.0.2.RELEASE') {
+exclude(module: 'spring-boot-starter-tomcat')
+    }
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-undertow', version:'2.0.2.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version:'2.0.2.RELEASE'
+    compile group: 'com.alibaba', name: 'druid-spring-boot-starter', version:'1.1.9'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-freemarker', version:'2.0.2.RELEASE'
+    compile group: 'io.github.biezhi', name: 'oh-my-email', version:'0.0.3'
+    compile group: 'org.ehcache', name: 'ehcache', version:'3.5.2'
+    compile group: 'rome', name: 'rome', version:'1.0'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version:'3.7'
+    compile group: 'cn.hutool', name: 'hutool-all', version:'4.0.12'
+    compile group: 'com.upyun', name: 'java-sdk', version:'4.0.1'
+    runtime group: 'mysql', name: 'mysql-connector-java', version:'5.1.46'
+    runtime group: 'com.h2database', name: 'h2', version:'1.4.197'
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version:'2.0.2.RELEASE'
+    compileOnly group: 'org.projectlombok', name: 'lombok', version:'1.16.20'
+}
