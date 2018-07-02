@@ -1,0 +1,35 @@
+apply plugin: 'java'
+// 改进现有DSL，提供新的DSL来支持向maven仓库发布内容
+apply plugin: 'maven-publish'
+
+// 编译期源代码jdk兼容版本
+sourceCompatibility = 1.8
+// 生成.class文件的目标jdk兼容版本
+targetCompatibility = 1.8
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8" // 默认null，此时使用平台的编码
+    options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation" // 用于未经转换的范型检查、过期API检查
+}
+
+task sourceJar(type: Jar, dependsOn: classes) { // used to generate a (project)-sources.jar
+    from sourceSets.main.allSource
+    // for resolve 'Gradle now uses separate output directories for each JVM language, but this build assumes a single directory for all classes from a source set. This behaviour has been deprecated and is scheduled to be removed in Gradle 5.0'
+//    sourceSets.main.output.classesDir = new File(buildDir, "classes/main")
+    sourceSets.main.java.outputDir = new File(buildDir, "classes/main")
+    classifier = 'sources'
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifact sourceJar
+            artifact javadocJar
+        }
+    }
+}

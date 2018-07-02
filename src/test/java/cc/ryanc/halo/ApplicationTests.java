@@ -18,8 +18,8 @@ public class ApplicationTests {
 	@Autowired
 	private CategoryRepository categoryRepository;
 
-	@Autowired
-	private CacheManager cacheManager;
+//	@Autowired
+//	private CacheManager cacheManager;
 
 	@Test
 	public void contextLoads() {
