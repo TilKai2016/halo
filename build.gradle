@@ -1,72 +1,64 @@
 buildscript {
     ext {
-        IDE_GRADLE = "$rootDir/gradle/ide.gradle"
-        JAVA_GRADLE = "$rootDir/gradle/java.gradle"
-        COMMON_GRADLE = "$rootDir/gradle/common.gradle"
-
-        springbootVersion = '2.0.2.RELEASE'
+        springBootVersion = '2.0.2.RELEASE'
     }
-
     repositories {
-        maven {
-            url "http://maven.aliyun.com/nexus/content/groups/public/"
-        }
-        maven {
-            url "http://repo.maven.apache.org/maven2"
-        }
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public" }
+        mavenCentral()
     }
-
     dependencies {
-//        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4+"
-        classpath ("org.springframework.boot:spring-boot-gradle-plugin:${springbootVersion}")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
+}
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
 
+group = 'cc.ryanc'
+version = 'latest'
+
+description = """halo"""
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
 }
 
-// Configures this project and each of its sub-projects
-allprojects {
-//    apply plugin: "com.jfrog.artifactory"
-    apply from: IDE_GRADLE
-    apply from: JAVA_GRADLE
-    // SpringBoot 可执行Jar文件打包，必须添加main class
-    apply plugin: "org.springframework.boot"
-
-    group = "cc.ryanc"
-    group = 'cc.ryanc'
-    version = 'latest'
-    description = """halo"""
-
-    repositories {
-        maven {
-            url "http://maven.aliyun.com/nexus/content/groups/public/"
-        }
-        maven {
-            url "http://repo.maven.apache.org/maven2"
-        }
+jar {
+    manifest {
+        attributes 'Main-Class': 'cc.ryanc.halo.Application'
     }
-
-    springbootVersion = '2.0.2.RELEASE'
-
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
 }
 
+
+repositories {
+        
+     maven { url "http://maven.aliyun.com/nexus/content/groups/public" }
+     maven { url "http://repo.maven.apache.org/maven2" }
+}
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web:${springbootVersion}") {
+    compile(group: 'org.springframework.boot', name: 'spring-boot-starter-web', version:'2.0.2.RELEASE') {
         exclude(module: 'spring-boot-starter-tomcat')
     }
-    compile ("org.springframework.boot:spring-boot-starter-undertow:${springbootVersion}")
-    compile ("org.springframework.boot:spring-boot-starter-data-jpa:${springbootVersion}")
-    compile ('com.alibaba:druid-spring-boot-starter:1.1.9')
-    compile ("org.springframework.boot:spring-boot-starter-freemarker:${springbootVersion}")
-    compile ('io.github.biezhi:oh-my-email:0.0.3')
-    compile ('org.ehcache:ehcache:3.5.2')
-    compile ('rome:rome:1.0')
-    compile ('org.apache.commons:commons-lang3:3.7')
-    compile ('cn.hutool:hutool-all:4.0.12')
-    compile ('com.upyun:java-sdk:4.0.1')
-    compile ('net.coobird:thumbnailator:0.4.8')
-    runtime ('mysql:mysql-connector-java:5.1.46')
-    runtime ('com.h2database:h2:1.4.197')
-    testCompile ("org.springframework.boot:spring-boot-starter-test:${springbootVersion}")
-    compileOnly ('org.projectlombok:lombok:1.16.20')
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-undertow', version:'2.0.2.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version:'2.0.2.RELEASE'
+    compile group: 'com.alibaba', name: 'druid-spring-boot-starter', version:'1.1.10'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-cache', version:'2.0.2.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-freemarker', version:'2.0.2.RELEASE'
+    compile group: 'io.github.biezhi', name: 'oh-my-email', version:'0.0.3'
+    compile group: 'org.ehcache', name: 'ehcache', version:'3.5.2'
+    compile group: 'rome', name: 'rome', version:'1.0'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version:'3.7'
+    compile group: 'cn.hutool', name: 'hutool-all', version:'4.1.1'
+    compile group: 'com.upyun', name: 'java-sdk', version:'4.0.1'
+    compile group: 'com.qiniu', name: 'qiniu-java-sdk', version:'7.2.14'
+    compile group: 'net.coobird', name: 'thumbnailator', version:'0.4.8'
+    compile group: 'javax.xml.bind', name: 'jaxb-api', version:'2.3.0'
+    runtime group: 'mysql', name: 'mysql-connector-java', version:'5.1.46'
+    runtime group: 'com.h2database', name: 'h2', version:'1.4.197'
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version:'2.0.2.RELEASE'
+    compileOnly group: 'org.projectlombok', name: 'lombok', version:'1.18.0'
 }
-
